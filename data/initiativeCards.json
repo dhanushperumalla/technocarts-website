@@ -1,0 +1,62 @@
+[
+  {
+    "src": "assets/logo.png",
+    "title": "Smart City Solutions",
+    "category": "Urban Technology",
+    "content": "Developing IoT-based systems for efficient urban management and improved quality of life."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Green Energy Innovation",
+    "category": "Sustainability",
+    "content": "Creating cutting-edge renewable energy technologies to combat climate change."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Digital Education Platform",
+    "category": "EdTech",
+    "content": "Building an accessible online learning ecosystem for students worldwide."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Healthcare AI",
+    "category": "MedTech",
+    "content": "Leveraging artificial intelligence to enhance medical diagnostics and patient care."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Sustainable Agriculture",
+    "category": "AgriTech",
+    "content": "Implementing advanced technologies to increase crop yields and reduce environmental impact."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Cybersecurity Solutions",
+    "category": "InfoSec",
+    "content": "Developing robust security measures to protect digital assets and privacy."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Blockchain for Transparency",
+    "category": "FinTech",
+    "content": "Utilizing blockchain technology to enhance transparency in financial transactions."
+  },
+  {
+    "src": "/logo.png",
+    "title": "AR/VR Education",
+    "category": "EdTech",
+    "content": "Creating immersive learning experiences through augmented and virtual reality."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Clean Water Technologies",
+    "category": "Environmental",
+    "content": "Innovating water purification methods for sustainable access to clean water."
+  },
+  {
+    "src": "/logo.png",
+    "title": "Space Exploration Tech",
+    "category": "Aerospace",
+    "content": "Developing technologies to advance human exploration of space and other planets."
+  }
+]

@@ -2,6 +2,15 @@
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import logo from "../assets/logo.png";
+import { Carousel } from "@/components/ui/carousel";
+import Image from "next/image";
+import initiativeCardsData from "@/data/initiativeCards.json";
+import { CARD_WIDTH, CARD_SPACING } from "@/components/ui/carousel"; // Import both constants
+import { BackgroundGradient } from "@/components/ui/background-gradient";
+import staffData from "@/data/staffData.json";
+import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
+import studentsData from "@/data/studentsData.json";
 
 const navItems = [
   {
@@ -44,7 +53,7 @@ export default function Home() {
             <FloatingNav navItems={navItems} />
           </div>
 
-          {/* Larger logo in top left corner */}
+          {/* Larger logo in top left corner (preserved) */}
           <div className="absolute top-6 left-6 z-40">
             <div className="relative inline-flex h-16 overflow-hidden rounded-full p-[1px]">
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
@@ -54,21 +63,109 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Centered TypewriterEffect and Join Button */}
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <TypewriterEffect words={words} />
-            <button className="inline-flex h-14 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-10 font-semibold text-white text-lg transition-colors focus:outline-none active:border-0 active:outline-none">
-              Join Now
-            </button>
+          {/* New 70-30 split layout */}
+          <div className="flex h-full">
+            {/* Left side: 70% width with welcome message and join button */}
+            <div className="w-[70%] flex flex-col items-center justify-center space-y-8">
+              <TypewriterEffect words={words} />
+              <button className="inline-flex h-14 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-10 font-semibold text-white text-lg transition-colors focus:outline-none active:border-0 active:outline-none">
+                Join Now
+              </button>
+            </div>
+
+            {/* Right side: 30% width (empty for now, can be used for additional content) */}
+            <div className="w-[50%] flex items-center justify-center">
+              <img
+                src={logo.src}
+                alt="TechnoCarts Logo"
+                className="max-w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </AuroraBackground>
       {/*  <-- Initiatives Section --> */}
-      <div className="h-screen bg-slate-900">
+      <div className="min-h-screen bg-slate-900 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            Our Initiatives
+          </h2>
+          <Carousel
+            items={initiativeCardsData.map((card, index) => (
+              <Card key={index} card={card} index={index} />
+            ))}
+          />
+        </div>
+      </div>
+      {/*  <-- About US Section --> */}
+      <div className=" bg-slate-900 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            About Us
+          </h2>
+          <p className="text-xl text-white text-center mb-5">Staff</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            {staffData.map((staff, index) => (
+              <BackgroundGradient
+                key={index}
+                className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900"
+              >
+                <img
+                  src={staff.image}
+                  alt={staff.name}
+                  className="w-full h-60 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-2">
+                  {staff.name}
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-400">
+                  {staff.position}
+                </p>
+              </BackgroundGradient>
+            ))}
+          </div>
+          <p className="text-xl text-white text-center mb-5">
+            Association - Students
+          </p>
+          <div className="flex flex-row items-center justify-center mb-10 w-full">
+            <AnimatedTooltip items={studentsData} />
+          </div>
+        </div>
+      </div>
+      {/*  <-- NewsLetter Section --> */}
+      <div className="h-screen bg-slate-600">
         <div className="flex items-center justify-center h-full">
-          <h2 className="text-4xl font-bold text-white">Our Initiatives</h2>
+          <h2 className="text-4xl font-bold text-white">News Letter</h2>
+        </div>
+      </div>
+      {/*  <-- Footer Section --> */}
+      <div className="h-60 bg-orange-500">
+        <div className="flex items-center justify-center h-full">
+          <h2 className="text-4xl font-bold text-white">Footer</h2>
         </div>
       </div>
     </div>
   );
 }
+
+// Update the Card component to use Next.js Image component and handle relative paths
+const Card = ({ card, index }: { card: any; index: number }) => {
+  return (
+    <div className="relative w-[300px] h-[500px] rounded-3xl overflow-hidden">
+      {" "}
+      {/* Increased height to 500px */}
+      <Image
+        src={card.src.startsWith("/") ? card.src : `/${card.src}`}
+        alt={card.title}
+        width={300}
+        height={500} // Increased height to 500
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-40 p-6 flex flex-col justify-end">
+        <p className="text-white text-sm font-medium">{card.category}</p>
+        <h3 className="text-white text-2xl font-semibold mt-2">{card.title}</h3>
+        <p className="text-white text-sm mt-2">{card.content}</p>
+      </div>
+    </div>
+  );
+};

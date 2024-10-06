@@ -1,0 +1,17 @@
+[
+  {
+    "name": "John Doe",
+    "position": "CEO & Founder",
+    "image": "/staff/john-doe.jpg"
+  },
+  {
+    "name": "Jane Smith",
+    "position": "CTO",
+    "image": "/staff/jane-smith.jpg"
+  },
+  {
+    "name": "Mike Johnson",
+    "position": "Lead Developer",
+    "image": "/staff/mike-johnson.jpg"
+  }
+]

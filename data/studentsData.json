@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "designation": "Computer Science",
+    "image": "/students/alice.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "designation": "Electrical Engineering",
+    "image": "/students/bob.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Charlie Brown",
+    "designation": "Mechanical Engineering",
+    "image": "/students/charlie.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Diana Ross",
+    "designation": "Data Science",
+    "image": "/students/diana.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Ethan Hunt",
+    "designation": "Robotics",
+    "image": "/students/ethan.jpg"
+  }
+]
