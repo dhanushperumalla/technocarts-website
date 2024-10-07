@@ -11,6 +11,7 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import staffData from "@/data/staffData.json";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import studentsData from "@/data/studentsData.json";
+import { SignupFormDemo } from "@/components/ui/NewsletterSignup";
 
 const navItems = [
   {
@@ -58,7 +59,7 @@ export default function Home() {
             <div className="relative inline-flex h-16 overflow-hidden rounded-full p-[1px]">
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
               <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-5 py-1 text-xl font-bold text-white backdrop-blur-3xl">
-                TechnoCarts
+                TechnoCrats
               </span>
             </div>
           </div>
@@ -133,9 +134,22 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- NewsLetter Section --> */}
-      <div className="h-screen bg-slate-600">
-        <div className="flex items-center justify-center h-full">
-          <h2 className="text-4xl font-bold text-white">News Letter</h2>
+      <div className="min-h-screen bg-slate-900 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h2 className="text-4xl font-bold text-white mb-4">
+                Stay Updated
+              </h2>
+              <p className="text-xl text-gray-300 max-w-md">
+                Subscribe to our newsletter for the latest updates and
+                innovations.
+              </p>
+            </div>
+            <div className="md:w-1/2">
+              <SignupFormDemo />
+            </div>
+          </div>
         </div>
       </div>
       {/*  <-- Footer Section --> */}
