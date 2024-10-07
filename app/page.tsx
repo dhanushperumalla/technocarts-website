@@ -17,15 +17,15 @@ import SocialIcons from "@/components/ui/SocialIcons";
 const navItems = [
   {
     name: "Home",
-    link: "/",
+    link: "home", // or you could use "/" if you prefer
   },
   {
     name: "Initiatives",
-    link: "/initiatives",
+    link: "initiatives",
   },
   {
     name: "About Us",
-    link: "/about-us",
+    link: "about-us",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div className="bg-black">
       {/* <-- Hero Section --> */}
-      <AuroraBackground className="h-screen">
+      <AuroraBackground className="h-screen" id="home">
         <div className="relative w-full h-screen">
           {/* FloatingNav positioned at the top */}
           <div className="absolute top-0 left-0 right-0 z-50">
@@ -70,7 +70,14 @@ export default function Home() {
             {/* Left side: 70% width with welcome message and join button */}
             <div className="w-[70%] flex flex-col items-center justify-center space-y-8">
               <TypewriterEffect words={words} />
-              <button className="inline-flex h-14 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-10 font-semibold text-white text-lg transition-colors focus:outline-none active:border-0 active:outline-none">
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("newsletter")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="inline-flex h-14 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-10 font-semibold text-white text-lg transition-colors focus:outline-none active:border-0 active:outline-none"
+              >
                 Join Now
               </button>
             </div>
@@ -87,7 +94,7 @@ export default function Home() {
         </div>
       </AuroraBackground>
       {/*  <-- Initiatives Section --> */}
-      <div className="min-h-screen bg-slate-900 py-20">
+      <div className="min-h-screen bg-slate-900 py-20" id="initiatives">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
             Our Initiatives
@@ -100,7 +107,7 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- About US Section --> */}
-      <div className=" bg-slate-900 py-20">
+      <div className=" bg-slate-900 py-20" id="about-us">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
             About Us
@@ -135,7 +142,7 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- NewsLetter Section --> */}
-      <div className="bg-slate-900 pt-10 pb-20">
+      <div className="bg-slate-900 pt-10 pb-20" id="newsletter">
         {" "}
         {/* Changed py-20 to pt-10 pb-20 */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -173,7 +180,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="/"
+                    href="#home"
                     className="hover:text-blue-400 transition-colors duration-200"
                   >
                     Home
@@ -181,7 +188,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="/initiatives"
+                    href="#initiatives"
                     className="hover:text-blue-400 transition-colors duration-200"
                   >
                     Initiatives
@@ -189,7 +196,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="/about-us"
+                    href="#about-us"
                     className="hover:text-blue-400 transition-colors duration-200"
                   >
                     About Us
@@ -197,7 +204,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="/contact"
+                    href="#newsletter"
                     className="hover:text-blue-400 transition-colors duration-200"
                   >
                     Contact

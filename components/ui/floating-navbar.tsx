@@ -39,6 +39,21 @@ export const FloatingNav = ({
     }
   });
 
+  const handleClick = (e: React.MouseEvent<HTMLElement>, link: string) => {
+    e.preventDefault();
+    if (link === "home" || link === "/") {
+      // Scroll to the top of the page for the home link
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // For other links, use the existing logic
+      const selector = "#" + link.replace(/^\//, "");
+      const element = document.querySelector(selector);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -62,6 +77,7 @@ export const FloatingNav = ({
           <Link
             key={`link-${idx}`}
             href={navItem.link}
+            onClick={(e) => handleClick(e, navItem.link)}
             className={cn(
               "relative text-white font-bold items-center flex space-x-1 hover:text-gray-300"
             )}
@@ -70,7 +86,10 @@ export const FloatingNav = ({
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </Link>
         ))}
-        <button className="border text-sm font-bold relative border-white/[0.2] text-white px-4 py-2 rounded-full hover:bg-white/10">
+        <button
+          className="border text-sm font-bold relative border-white/[0.2] text-white px-4 py-2 rounded-full hover:bg-white/10"
+          onClick={(e) => handleClick(e, "newsletter")}
+        >
           <span>Sign Up</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
         </button>
