@@ -12,6 +12,7 @@ import staffData from "@/data/staffData.json";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import studentsData from "@/data/studentsData.json";
 import { SignupFormDemo } from "@/components/ui/NewsletterSignup";
+import SocialIcons from "@/components/ui/SocialIcons";
 
 const navItems = [
   {
@@ -38,14 +39,14 @@ const words = [
     className: "text-white",
   },
   {
-    text: "TechnoCarts",
+    text: "TechnoCrats",
     className: "text-blue-500 dark:text-blue-500",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="h-[200vh] bg-black">
+    <div className="bg-black">
       {/* <-- Hero Section --> */}
       <AuroraBackground className="h-screen">
         <div className="relative w-full h-screen">
@@ -78,7 +79,7 @@ export default function Home() {
             <div className="w-[50%] flex items-center justify-center">
               <img
                 src={logo.src}
-                alt="TechnoCarts Logo"
+                alt="TechnoCrats Logo"
                 className="max-w-full h-auto"
               />
             </div>
@@ -125,7 +126,7 @@ export default function Home() {
               </BackgroundGradient>
             ))}
           </div>
-          <p className="text-xl text-white text-center mb-5">
+          <p className="text-xl text-white text-center mb-5 mt-6">
             Association - Students
           </p>
           <div className="flex flex-row items-center justify-center mb-10 w-full">
@@ -134,7 +135,9 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- NewsLetter Section --> */}
-      <div className="min-h-screen bg-slate-900 py-20">
+      <div className="bg-slate-900 pt-10 pb-20">
+        {" "}
+        {/* Changed py-20 to pt-10 pb-20 */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
@@ -153,11 +156,76 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- Footer Section --> */}
-      <div className="h-60 bg-orange-500">
-        <div className="flex items-center justify-center h-full">
-          <h2 className="text-4xl font-bold text-white">Footer</h2>
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Logo and Description */}
+            <div>
+              <h2 className="text-2xl font-bold mb-4">TechnoCrats</h2>
+              <p className="text-gray-400">
+                Empowering innovation through technology
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="/"
+                    className="hover:text-blue-400 transition-colors duration-200"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/initiatives"
+                    className="hover:text-blue-400 transition-colors duration-200"
+                  >
+                    Initiatives
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/about-us"
+                    className="hover:text-blue-400 transition-colors duration-200"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/contact"
+                    className="hover:text-blue-400 transition-colors duration-200"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Social Media and Newsletter */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
+              <SocialIcons />
+              <p className="text-sm text-gray-400 mt-4">
+                Stay updated with our latest news and innovations.
+              </p>
+              <a
+                href="#newsletter"
+                className="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-200"
+              >
+                Subscribe to Newsletter
+              </a>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+            <p>&copy; 2024 TechnoCrats. All rights reserved.</p>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 }
