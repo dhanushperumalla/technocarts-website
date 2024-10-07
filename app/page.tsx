@@ -13,6 +13,7 @@ import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import studentsData from "@/data/studentsData.json";
 import { SignupFormDemo } from "@/components/ui/NewsletterSignup";
 import SocialIcons from "@/components/ui/SocialIcons";
+import { useState } from "react";
 
 const navItems = [
   {
@@ -45,6 +46,44 @@ const words = [
 ];
 
 export default function Home() {
+  const [signupStatus, setSignupStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleSignupSubmit = async (formData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  }) => {
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSignupStatus("success");
+        setStatusMessage("Successfully subscribed to the newsletter!");
+      } else {
+        throw new Error(data.message || "An error occurred");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSignupStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "An error occurred. Please try again."
+      );
+    }
+  };
+
   return (
     <div className="bg-black">
       {/* <-- Hero Section --> */}
@@ -143,8 +182,6 @@ export default function Home() {
       </div>
       {/*  <-- NewsLetter Section --> */}
       <div className="bg-slate-900 pt-10 pb-20" id="newsletter">
-        {" "}
-        {/* Changed py-20 to pt-10 pb-20 */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
@@ -157,7 +194,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <SignupFormDemo />
+              <SignupFormDemo onSubmit={handleSignupSubmit} />
             </div>
           </div>
         </div>

@@ -1,13 +1,41 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 
-export function SignupFormDemo() {
+interface SignupFormDemoProps {
+  onSubmit: (formData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  }) => void;
+}
+
+export function SignupFormDemo({ onSubmit }: SignupFormDemoProps) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    if (showMessage) {
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showMessage]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+    onSubmit({ firstName, lastName, email });
+    setShowMessage(true);
+    // Clear form fields after submission
+    setFirstName("");
+    setLastName("");
+    setEmail("");
   };
 
   return (
@@ -24,6 +52,9 @@ export function SignupFormDemo() {
             placeholder="John"
             type="text"
             className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
           />
         </LabelInputContainer>
         <LabelInputContainer>
@@ -35,6 +66,9 @@ export function SignupFormDemo() {
             placeholder="Doe"
             type="text"
             className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
           />
         </LabelInputContainer>
         <LabelInputContainer>
@@ -46,6 +80,9 @@ export function SignupFormDemo() {
             placeholder="johndoe@example.com"
             type="email"
             className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </LabelInputContainer>
 
@@ -56,6 +93,12 @@ export function SignupFormDemo() {
           Sign up &rarr;
           <BottomGradient />
         </button>
+
+        {showMessage && (
+          <p className="text-green-400 text-sm mt-2 text-center">
+            Form submitted successfully!
+          </p>
+        )}
       </form>
     </div>
   );
