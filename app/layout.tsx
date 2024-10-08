@@ -32,6 +32,9 @@ const navItems = [
 export const metadata: Metadata = {
   title: "TechnoCrats",
   description: "Empowering innovation through technology",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

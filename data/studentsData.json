@@ -1,32 +1,32 @@
 [
   {
     "id": 1,
-    "name": "Alice Johnson",
-    "designation": "Computer Science",
-    "image": "/students/alice.jpg"
+    "name": "Eswar",
+    "designation": "Association - Leader",
+    "image": "/Association/eswar.webp"
   },
   {
     "id": 2,
-    "name": "Bob Smith",
-    "designation": "Electrical Engineering",
-    "image": "/students/bob.jpg"
+    "name": "Dhanush",
+    "designation": "Volunteer",
+    "image": "/Association/dhanush.jpg"
   },
   {
     "id": 3,
-    "name": "Charlie Brown",
-    "designation": "Mechanical Engineering",
-    "image": "/students/charlie.jpg"
+    "name": "Charan",
+    "designation": "Volunteer",
+    "image": "/Association/charan.webp"
   },
   {
     "id": 4,
     "name": "Diana Ross",
-    "designation": "Data Science",
+    "designation": "Volunteer",
     "image": "/students/diana.jpg"
   },
   {
     "id": 5,
     "name": "Ethan Hunt",
-    "designation": "Robotics",
+    "designation": "Volunteer",
     "image": "/students/ethan.jpg"
   }
 ]

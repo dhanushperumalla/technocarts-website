@@ -1,17 +1,17 @@
 [
   {
-    "name": "John Doe",
-    "position": "CEO & Founder",
+    "name": "Sravanthi Javidi",
+    "position": "Lecturer",
     "image": "/staff/john-doe.jpg"
   },
   {
-    "name": "Jane Smith",
-    "position": "CTO",
-    "image": "/staff/jane-smith.jpg"
+    "name": "Ramachararao",
+    "position": "HOD",
+    "image": "/Staff/HOD.png"
   },
   {
-    "name": "Mike Johnson",
-    "position": "Lead Developer",
+    "name": "Gumadi Srinivasro",
+    "position": "Lecturer",
     "image": "/staff/mike-johnson.jpg"
   }
 ]

@@ -6,7 +6,6 @@ import logo from "../assets/logo.png";
 import { Carousel } from "@/components/ui/carousel";
 import Image from "next/image";
 import initiativeCardsData from "@/data/initiativeCards.json";
-import { CARD_WIDTH, CARD_SPACING } from "@/components/ui/carousel"; // Import both constants
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import staffData from "@/data/staffData.json";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
@@ -18,7 +17,7 @@ import { useState } from "react";
 const navItems = [
   {
     name: "Home",
-    link: "home", // or you could use "/" if you prefer
+    link: "home",
   },
   {
     name: "Initiatives",
@@ -274,20 +273,18 @@ export default function Home() {
   );
 }
 
-// Update the Card component to use Next.js Image component and handle relative paths
+// Update the Card component to make images full height
 const Card = ({ card, index }: { card: any; index: number }) => {
   return (
     <div className="relative w-[300px] h-[500px] rounded-3xl overflow-hidden">
-      {" "}
-      {/* Increased height to 500px */}
       <Image
         src={card.src.startsWith("/") ? card.src : `/${card.src}`}
         alt={card.title}
-        width={300}
-        height={500} // Increased height to 500
-        className="object-cover"
+        layout="fill"
+        objectFit="cover"
+        className="z-0"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-40 p-6 flex flex-col justify-end">
+      <div className="absolute inset-0 bg-black bg-opacity-40 p-6 flex flex-col justify-end z-10">
         <p className="text-white text-sm font-medium">{card.category}</p>
         <h3 className="text-white text-2xl font-semibold mt-2">{card.title}</h3>
         <p className="text-white text-sm mt-2">{card.content}</p>

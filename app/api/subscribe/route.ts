@@ -7,6 +7,14 @@ export async function POST(request: Request) {
 
     console.log("Received request:", { firstName, lastName, email });
 
+    if (!process.env.EMAIL_PASS) {
+      console.error("EMAIL_PASS environment variable is not set");
+      return NextResponse.json(
+        { message: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
@@ -23,9 +31,9 @@ export async function POST(request: Request) {
     const info = await transporter.sendMail({
       from: '"TechnoCrats Association" <22ht1a05b9@gmail.com>',
       to: email,
-      subject: "Successfully Subscribed to TechnoCrats Association",
-      text: `Dear ${firstName} ${lastName},\n\nThank you for subscribing to the TechnoCrats Association newsletter. We're excited to keep you updated on our latest innovations and initiatives.\n\nBest regards,\nTechnoCrats Association Team`,
-      html: `<p>Dear ${firstName} ${lastName},</p><p>Thank you for subscribing to the TechnoCrats Association newsletter. We're excited to keep you updated on our latest innovations and initiatives.</p><p>Best regards,<br>TechnoCrats Association Team</p>`,
+      subject: "Successfully Subscribed to TechnoCrats Association 🎉",
+      text: `Dear ${firstName} ${lastName},\n\nThank you for subscribing to the TechnoCrats Association newsletter. 🎉 We're excited to keep you updated on our latest innovations and initiatives. 💡🌐\n\nBest regards,\nTechnoCrats Association Team 🤝`,
+      html: `<p>Dear ${firstName} ${lastName},</p><p>Thank you for subscribing to the TechnoCrats Association newsletter. 🎉 We're excited to keep you updated on our latest innovations and initiatives. 💡🌐</p><p>Best regards,<br>TechnoCrats Association Team 🤝</p>`,
     });
 
     console.log("Email sent successfully:", info.response);
