@@ -16,17 +16,5 @@
     "name": "Charan",
     "designation": "Volunteer",
     "image": "/Association/charan.webp"
-  },
-  {
-    "id": 4,
-    "name": "Diana Ross",
-    "designation": "Volunteer",
-    "image": "/students/diana.jpg"
-  },
-  {
-    "id": 5,
-    "name": "Ethan Hunt",
-    "designation": "Volunteer",
-    "image": "/students/ethan.jpg"
   }
 ]

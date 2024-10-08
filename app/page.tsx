@@ -13,6 +13,7 @@ import studentsData from "@/data/studentsData.json";
 import { SignupFormDemo } from "@/components/ui/NewsletterSignup";
 import SocialIcons from "@/components/ui/SocialIcons";
 import { useState } from "react";
+import { Boxes } from "@/components/ui/background-boxes";
 
 const navItems = [
   {
@@ -131,8 +132,12 @@ export default function Home() {
           </div>
         </div>
       </AuroraBackground>
+
       {/*  <-- Initiatives Section --> */}
-      <div className="min-h-screen bg-slate-900 py-20" id="initiatives">
+      <div
+        className="min-h-screen py-20 bg-gradient-to-r from-slate-900 to-slate-700"
+        id="initiatives"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
             Our Initiatives
@@ -145,13 +150,16 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- About US Section --> */}
-      <div className=" bg-slate-900 py-20" id="about-us">
+      <div
+        className="bg-gradient-to-r from-slate-500 to-slate-800 pt-10 pb-20"
+        id="about-us"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
             About Us
           </h2>
           <p className="text-xl text-white text-center mb-5">Staff</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {staffData.map((staff, index) => (
               <BackgroundGradient
                 key={index}
@@ -171,7 +179,7 @@ export default function Home() {
               </BackgroundGradient>
             ))}
           </div>
-          <p className="text-xl text-white text-center mb-5 mt-6">
+          <p className="text-xl text-white text-center mb-8 mt-16">
             Association - Students
           </p>
           <div className="flex flex-row items-center justify-center mb-10 w-full">
@@ -180,8 +188,12 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- NewsLetter Section --> */}
-      <div className="bg-slate-900 pt-10 pb-20" id="newsletter">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="bg-slate-900 pt-10 pb-20 relative overflow-hidden"
+        id="newsletter"
+      >
+        <Boxes />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
               <h2 className="text-4xl font-bold text-white mb-4">
@@ -199,7 +211,7 @@ export default function Home() {
         </div>
       </div>
       {/*  <-- Footer Section --> */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gradient-to-r from-slate-900 to-slate-700 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Logo and Description */}
