@@ -3,11 +3,16 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
+interface CarouselProps<T> {
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
+}
+
 export const CARD_WIDTH = 300;
 export const CARD_HEIGHT = 500; // Updated to match the new card height
 export const CARD_SPACING = 20;
 
-export const Carousel = ({ items }: { items: JSX.Element[] }) => {
+export function Carousel<T>({ items, renderItem }: CarouselProps<T>) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(containerRef, () => {
@@ -32,10 +37,10 @@ export const Carousel = ({ items }: { items: JSX.Element[] }) => {
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            {item}
+            {renderItem(item)}
           </motion.div>
         ))}
       </motion.div>
     </div>
   );
-};
+}
