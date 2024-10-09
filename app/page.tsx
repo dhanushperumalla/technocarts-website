@@ -38,10 +38,10 @@ interface InitiativeCard {
 }
 
 export default function Home() {
-  const [signupStatus, setSignupStatus] = useState<
+  const [_signupStatus, setSignupStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-  const [statusMessage, setStatusMessage] = useState("");
+  const [_statusMessage, setStatusMessage] = useState("");
 
   const handleSignupSubmit = async (formData: {
     firstName: string;
@@ -152,9 +152,11 @@ export default function Home() {
                 key={index}
                 className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900"
               >
-                <img
+                <Image
                   src={staff.image}
                   alt={staff.name}
+                  width={500}
+                  height={300}
                   className="w-full h-60 object-cover rounded-lg mb-4"
                 />
                 <h3 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-2">

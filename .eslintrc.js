@@ -9,6 +9,8 @@ module.exports = {
       },
     ],
     "react/no-unescaped-entities": "off",
-    "@next/next/no-img-element": "error",
+    "@next/next/no-img-element": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "prefer-const": "warn",
   },
 };

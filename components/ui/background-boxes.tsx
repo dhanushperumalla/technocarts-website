@@ -16,7 +16,8 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
     "--blue-300",
     "--indigo-300",
     "--violet-300",
-  ];
+  ] as const;
+
   const getRandomColor = () => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
