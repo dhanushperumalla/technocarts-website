@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import clientPromise from "../../lib/mongodb";
 
 export async function POST(request: Request) {
   try {
@@ -14,6 +15,31 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // Store subscriber data in MongoDB
+    const client = await clientPromise;
+    const db = client.db("TechnoCrats"); // Use your database name here
+
+    // Check if the collection exists, if not create it
+    const collections = await db
+      .listCollections({ name: "subscribers" })
+      .toArray();
+    if (collections.length === 0) {
+      await db.createCollection("subscribers");
+      console.log("Subscribers collection created");
+    }
+
+    const subscribersCollection = db.collection("subscribers");
+
+    // Insert the new subscriber
+    const result = await subscribersCollection.insertOne({
+      firstName,
+      lastName,
+      email,
+      subscriptionDate: new Date(),
+    });
+
+    console.log("Subscriber data stored in MongoDB:", result.insertedId);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
